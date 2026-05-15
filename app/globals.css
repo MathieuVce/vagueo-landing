@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Marine & azur */
+  --abyss:      #050a1a;
+  --marine:     #0a1530;
+  --marine-2:   #142a5c;
+  --azure:      oklch(0.65 0.16 240);
+  --azure-soft: oklch(0.92 0.05 240);
+
+  /* Sky / Sea */
+  --sky:        oklch(0.78 0.10 235);
+  --sky-2:      oklch(0.86 0.07 235);
+  --foam:       oklch(0.95 0.035 235);
+
+  /* Orange — badge bêta uniquement */
+  --ember:      oklch(0.72 0.20 50);
+  --ember-2:    oklch(0.78 0.18 55);
+  --ember-soft: oklch(0.95 0.06 60);
+
+  /* Neutrals */
+  --paper:      #fbfaf7;
+  --ink:        #0a1224;
+  --mute:       #5b6478;
+  --line:       rgba(10,18,36,0.10);
+  --line-soft:  rgba(10,18,36,0.05);
+
+  /* Radii */
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-xl: 40px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter Tight", -apple-system, system-ui, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p { margin: 0; text-wrap: pretty; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.serif-it {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50%       { opacity: 1;    transform: scale(1.15); }
+}
+
+@keyframes waveLoop {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes haloDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(3%, -2%) scale(1.05); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { translate: 0 0; }
+  50%       { translate: 0 -10px; }
+}
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
