@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vaguéo — Landing Page
 
-## Getting Started
+Landing page de présentation pour **Vaguéo**, un système de file d'attente virtuelle par vagues dynamiques.
 
-First, run the development server:
+## Concept
+
+Vaguéo permet aux clients de rejoindre une file d'attente via QR code, puis de circuler librement en attendant leur tour. L'algorithme calcule les vagues à rappeler en fonction de la cadence du stand et notifie chaque client au bon moment.
+
+**Cibles :** festivals, food-trucks, restaurants de rue, boutiques, pop-up stores, drops sneakers.
+
+## Stack technique
+
+| Outil | Rôle |
+|---|---|
+| Next.js 16 (App Router) | Framework React, SSG + API routes |
+| TypeScript | Typage statique |
+| Framer Motion | Animations scroll-reveal |
+| Canvas 2D API | Globe 3D wireframe interactif |
+| React Hook Form + Zod | Formulaire de contact validé |
+| Resend | Envoi d'emails transactionnels |
+| Vercel Analytics | Suivi des visites |
+| Vercel | Déploiement et hosting |
+
+## Lancer en local
+
+```bash
+npm install
+```
+
+Créez un fichier `.env.local` à la racine :
+
+```
+RESEND_API_KEY=re_xxxxxxxxxxxx
+```
+
+Puis :
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|---|---|
+| `RESEND_API_KEY` | Clé API Resend pour l'envoi des candidatures bêta |
 
-## Learn More
+## Structure du projet
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  api/contact/route.ts   # Endpoint envoi email (Resend)
+  layout.tsx             # Fonts, metadata OG, Analytics
+  page.tsx               # Assemblage des sections
+  globals.css            # Design tokens, animations CSS
+  icon.png               # Favicon
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+components/
+  Nav.tsx                # Navigation fixe avec scroll effect
+  Hero.tsx               # Globe 3D interactif + headline
+  Problem.tsx            # Scènes SVG avant/après
+  Solution.tsx           # 4 étapes du parcours client
+  Security.tsx           # Démo couleurs anti-fraude live
+  ROI.tsx                # Stats + carte bêta
+  CtaFooter.tsx          # Formulaire de contact + footer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+public/
+  vagueo-logo.png        # Logo
+```
 
-## Deploy on Vercel
+## Déploiement
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Le projet est déployé sur Vercel. Ajoutez `RESEND_API_KEY` dans Settings → Environment Variables avant de pousser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx vercel --prod
+```
