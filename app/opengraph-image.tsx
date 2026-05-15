@@ -1,14 +1,14 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-export const runtime = "edge";
 export const alt = "Vaguéo — Libérez vos clients, optimisez votre flux";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function Image() {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+  const logoBuffer = readFileSync(join(process.cwd(), "public", "vagueo-logo.png"));
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -27,18 +27,13 @@ export default function Image() {
         {/* Glow */}
         <div style={{ position: "absolute", top: -120, left: "50%", width: 900, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(59,130,246,0.22) 0%, transparent 70%)", transform: "translateX(-50%)", display: "flex" }} />
 
-        {/* Logo image */}
+        {/* Logo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`${baseUrl}/vagueo-logo.png`}
-          width={240}
-          height={240}
-          style={{ objectFit: "contain", marginBottom: 36 }}
-        />
+        <img src={logoSrc} width={240} height={240} style={{ objectFit: "contain", marginBottom: 36 }} />
 
         {/* Tagline */}
         <div style={{ fontSize: 30, color: "rgba(255,255,255,0.65)", textAlign: "center", maxWidth: 680, lineHeight: 1.5, display: "flex", flexWrap: "wrap", justifyContent: "center", fontFamily: "sans-serif" }}>
-          La file d&apos;attente par vagues dynamiques.<br/>Libérez vos clients, optimisez votre flux.
+          La file d'attente par vagues dynamiques.
         </div>
 
         {/* Badge */}
