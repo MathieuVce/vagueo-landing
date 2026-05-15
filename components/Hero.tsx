@@ -252,15 +252,17 @@ export default function Hero() {
             </motion.p>
 
             <motion.div {...revealProps} transition={{ ...revealProps.transition, delay: 0.24 }}
-              style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", marginBottom: 56 }}>
-              <a href="#contact" onClick={e => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "16px 26px", borderRadius: 999, fontWeight: 500, fontSize: 16, cursor: "pointer", background: "linear-gradient(160deg, oklch(0.65 0.16 240) 0%, oklch(0.50 0.16 240) 100%)", color: "#fff", boxShadow: "0 8px 22px -8px oklch(0.50 0.16 240 / 0.55), inset 0 0 0 1px oklch(0.70 0.14 240)", border: 0 }}>
-                Devenir bêta testeur <span>→</span>
-              </a>
-              <a href="#solution" onClick={e => { e.preventDefault(); document.querySelector("#solution")?.scrollIntoView({ behavior: "smooth" }); }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "16px 26px", borderRadius: 999, fontWeight: 500, fontSize: 16, cursor: "pointer", background: "transparent", color: "#fff", boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.22)", border: 0 }}>
-                Voir la solution
-              </a>
+              style={{ marginBottom: 56 }}>
+              <div className="hero-ctas" style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+                <a href="#contact" onClick={e => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                  style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "16px 26px", borderRadius: 999, fontWeight: 500, fontSize: 16, cursor: "pointer", background: "linear-gradient(160deg, oklch(0.65 0.16 240) 0%, oklch(0.50 0.16 240) 100%)", color: "#fff", boxShadow: "0 8px 22px -8px oklch(0.50 0.16 240 / 0.55), inset 0 0 0 1px oklch(0.70 0.14 240)", border: 0, textDecoration: "none" }}>
+                  Devenir bêta testeur <span>→</span>
+                </a>
+                <a href="#solution" onClick={e => { e.preventDefault(); document.querySelector("#solution")?.scrollIntoView({ behavior: "smooth" }); }}
+                  style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "16px 26px", borderRadius: 999, fontWeight: 500, fontSize: 16, cursor: "pointer", background: "transparent", color: "#fff", boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.22)", border: 0, textDecoration: "none" }}>
+                  Voir la solution
+                </a>
+              </div>
             </motion.div>
 
             <motion.div {...revealProps} transition={{ ...revealProps.transition, delay: 0.32 }}
@@ -335,6 +337,10 @@ export default function Hero() {
           .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-header { padding: 100px 0 80px !important; }
           .hero-art-wrap { max-width: 320px !important; margin: 0 auto !important; }
+        }
+        @media (max-width: 600px) {
+          .hero-ctas { flex-direction: column !important; }
+          .hero-ctas a { width: 100% !important; box-sizing: border-box !important; }
         }
         @media (max-width: 480px) {
           .hero-header { padding: 90px 0 60px !important; }
