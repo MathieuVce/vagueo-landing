@@ -2,7 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import dynamic from "next/dynamic";
+
+const DemoModal = dynamic(() => import("./demo/DemoModal"), { ssr: false });
 
 function Reveal({ children, delay = 0, stretch = false }: { children: React.ReactNode; delay?: number; stretch?: boolean }) {
   const ref = useRef(null);
@@ -24,6 +27,7 @@ const steps = [
 ];
 
 export default function Solution() {
+  const [demoOpen, setDemoOpen] = useState(false);
   return (
     <section id="solution" style={{ position: "relative", padding: "120px 0", background: "linear-gradient(180deg, #fbfaf7 0%, oklch(0.95 0.035 235) 100%)", overflow: "hidden" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 32px" }}>
@@ -94,7 +98,48 @@ export default function Solution() {
             </div>
           </Reveal>
         </div>
+
+        {/* Demo CTA */}
+        <div style={{ marginTop: 48, display: "flex", justifyContent: "center" }}>
+          <Reveal delay={0.15}>
+            <button
+              onClick={() => setDemoOpen(true)}
+              style={{
+                display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 6,
+                background: "linear-gradient(155deg, oklch(0.55 0.14 235) 0%, oklch(0.42 0.13 240) 100%)",
+                border: 0,
+                color: "#fff",
+                fontFamily: "var(--font-inter-tight), sans-serif",
+                cursor: "pointer",
+                padding: "20px 48px", borderRadius: 20,
+                boxShadow: "0 8px 32px -8px oklch(0.45 0.16 240 / 0.55), inset 0 1px 0 rgba(255,255,255,0.12)",
+                transition: "transform 0.15s, box-shadow 0.15s",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 14px 40px -8px oklch(0.45 0.16 240 / 0.65), inset 0 1px 0 rgba(255,255,255,0.12)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 32px -8px oklch(0.45 0.16 240 / 0.55), inset 0 1px 0 rgba(255,255,255,0.12)";
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 12, fontWeight: 600, fontSize: 18, letterSpacing: "-0.01em" }}>
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
+                  <circle cx="11" cy="11" r="10" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                  <path d="M9 7.5l6 3.5-6 3.5V7.5z" fill="#fff"/>
+                </svg>
+                Voir la démo interactive
+              </div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", letterSpacing: "0.04em" }}>
+                2 téléphones · état partagé en temps réel
+              </div>
+            </button>
+          </Reveal>
+        </div>
       </div>
+
+      <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
 
       <style>{`
         @media (max-width: 860px) { .flow-steps { grid-template-columns: 1fr 1fr !important; } .flow-connect { display: none !important; } }

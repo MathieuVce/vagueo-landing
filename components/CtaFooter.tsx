@@ -7,6 +7,9 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import dynamic from "next/dynamic";
+
+const DemoModal = dynamic(() => import("./demo/DemoModal"), { ssr: false });
 
 function Reveal({ children, delay = 0, center = false }: { children: React.ReactNode; delay?: number; center?: boolean }) {
   const ref = useRef(null);
@@ -59,6 +62,7 @@ export default function CtaFooter() {
   };
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [demoOpen, setDemoOpen] = useState(false);
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -114,6 +118,39 @@ export default function CtaFooter() {
                 On installe en 5 minutes, on vous accompagne gratuitement pendant tout le pilote. En échange : vos retours terrain.
               </p>
             </div>
+          </Reveal>
+
+          {/* Demo teaser */}
+          <Reveal delay={0.08} center>
+            <button
+              onClick={() => setDemoOpen(true)}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                marginBottom: 32,
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.16)",
+                color: "rgba(255,255,255,0.85)",
+                fontFamily: "var(--font-inter-tight), sans-serif",
+                fontWeight: 500, fontSize: 15, letterSpacing: "-0.01em",
+                padding: "12px 24px", borderRadius: 999, cursor: "pointer",
+                backdropFilter: "blur(8px)",
+                transition: "background 0.15s, border-color 0.15s",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.11)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.3)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.16)";
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
+                <circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5"/>
+                <path d="M8 7l5 3-5 3V7z" fill="#fff"/>
+              </svg>
+              Voir la démo interactive d&apos;abord
+            </button>
           </Reveal>
 
           {/* Form card */}
@@ -186,6 +223,8 @@ export default function CtaFooter() {
           </Reveal>
         </div>
       </section>
+
+      <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
 
       {/* Footer */}
       <footer style={{ background: "#050a1a", color: "rgba(255,255,255,0.55)", padding: "60px 0 40px", fontSize: 14 }}>
