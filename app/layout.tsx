@@ -23,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
   title: "Vaguéo — Libérez vos clients, optimisez votre flux",
-  icons: { icon: "/icon.png", apple: "/icon.png" },
   description:
     "La première file d'attente par vagues dynamiques. Vos clients ne piétinent plus : ils circulent, consomment, et reviennent quand c'est leur tour.",
   openGraph: {
