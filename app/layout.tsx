@@ -30,11 +30,11 @@ export const metadata: Metadata = {
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000"
   ),
-  title: "Vaguéo — Libérez vos clients, optimisez votre flux",
+  title: "Vaguéo: Libérez vos clients, optimisez votre flux",
   description:
     "La première file d'attente par vagues dynamiques. Vos clients ne piétinent plus : ils circulent, consomment, et reviennent quand c'est leur tour.",
   openGraph: {
-    title: "Vaguéo — Libérez vos clients, optimisez votre flux",
+    title: "Vaguéo: Libérez vos clients, optimisez votre flux",
     description:
       "File d'attente intelligente par vagues dynamiques. Bêta gratuite 2026.",
     type: "website",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vaguéo — Libérez vos clients, optimisez votre flux",
+    title: "Vaguéo: Libérez vos clients, optimisez votre flux",
     description: "File d'attente intelligente par vagues dynamiques.",
   },
 };

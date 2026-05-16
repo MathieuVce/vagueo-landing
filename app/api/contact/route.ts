@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       from: "Vaguéo <onboarding@resend.dev>",
       to: ["mathieu.vacance@epitech.eu"],
       replyTo: email,
-      subject: `[Bêta] Nouvelle candidature — ${prenom} (${type})`,
+      subject: `[Bêta] Nouvelle candidature: ${prenom} (${type})`,
       text: `Prénom : ${prenom}\nEmail : ${email}\nType d'établissement : ${type}\n\nMessage :\n${message || "—"}`,
     });
 

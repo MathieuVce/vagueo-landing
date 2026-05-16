@@ -248,7 +248,7 @@ export default function Hero() {
               <em style={{ fontFamily: "var(--font-instrument-serif), Georgia, serif", fontStyle: "italic", color: "oklch(0.78 0.10 235)" }}>vagues dynamiques</em>.
               Vos clients ne piétinent plus : ils circulent, consomment, et reviennent quand c'est leur tour.
               <br /><br />
-              <strong style={{ color: "#fff", fontWeight: 500 }}>On est en phase de prototypage — venez tester gratuitement.</strong> Vos retours façonnent directement le produit.
+              <strong style={{ color: "#fff", fontWeight: 500 }}>On est en phase de prototypage, venez tester gratuitement.</strong> Vos retours façonnent directement le produit.
             </motion.p>
 
             <motion.div {...revealProps} transition={{ ...revealProps.transition, delay: 0.24 }}

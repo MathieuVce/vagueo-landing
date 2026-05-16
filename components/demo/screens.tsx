@@ -77,7 +77,7 @@ export function ScreenAttente({ palette: p, waveVariant = "fluid", estimatedMin,
           <div style={{ fontFamily: FONT_SERIF, fontStyle: "italic", fontSize: 34, lineHeight: 1.1, letterSpacing: "-0.02em" }}>Stand en pause</div>
           <div style={{ marginTop: 14, fontSize: 14, color: p.mute, lineHeight: 1.6, maxWidth: 260 }}>
             {isOrange
-              ? "C'était presque votre tour. Le vendeur reprend dans un instant — restez devant le stand."
+              ? "C'était presque votre tour. Le vendeur reprend dans un instant, restez devant le stand."
               : "Le vendeur a momentanément suspendu la file. Votre place est conservée, restez dans les environs."}
           </div>
         </div>
@@ -146,7 +146,7 @@ export function ScreenCheckin({ palette: p, onConfirm, onDelay, delayUsed = fals
         <div style={{ marginTop: 10, textAlign: "center", fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>Appuyez uniquement lorsque vous êtes devant le vendeur</div>
         {!delayUsed && (
           <button onClick={onDelay} style={{ marginTop: 16, width: "100%", border: "1.5px solid rgba(255,255,255,0.28)", borderRadius: 16, padding: "13px 16px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.82)", fontFamily: FONT, fontSize: 13, cursor: "pointer", letterSpacing: "-0.01em" }}>
-            Pas encore là — décaler d&apos;environ {delayMin} min
+            Pas encore là ? Décaler d&apos;environ {delayMin} min
           </button>
         )}
       </div>
@@ -176,7 +176,7 @@ export function ScreenValidation({ secureColor = "#FF6B9D", colorName = "Rose", 
           <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(0,0,0,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, marginBottom: 20 }}>❚❚</div>
           <div style={{ fontFamily: FONT_SERIF, fontStyle: "italic", fontSize: 34, lineHeight: 1.1, letterSpacing: "-0.02em" }}>Stand en pause</div>
           <div style={{ marginTop: 14, fontSize: 14, color: "rgba(0,0,0,0.6)", lineHeight: 1.6, maxWidth: 260 }}>
-            Votre présence est validée. Le vendeur reprend dans un instant — restez devant le stand.
+            Votre présence est validée. Le vendeur reprend dans un instant, restez devant le stand.
           </div>
         </div>
         <div style={{ position: "relative", zIndex: 2, padding: "0 22px 38px" }}>
