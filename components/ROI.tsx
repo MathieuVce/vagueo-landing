@@ -17,7 +17,7 @@ function Reveal({ children, delay = 0, stretch = false }: { children: React.Reac
 }
 
 const stats = [
-  { val: "+38", sym: "%", lbl: "Panier moyen", desc: "Libéré de la file, le client garde son envie d'acheter intacte — et la dépense ailleurs en attendant son tour.", src: "Estimé", warm: true, delay: 0 },
+  { val: "+38", sym: "%", lbl: "Panier moyen", desc: "Libéré de la file, le client garde son envie d'acheter intacte.", src: "Estimé", warm: true, delay: 0 },
   { val: "−72", sym: "%", lbl: "Abandon de file", desc: "Plus de «j'attends 40 minutes, je laisse tomber.» Le client connaît son temps d'attente exact en permanence.", src: "Mesuré", warm: false, delay: 0.08 },
   { val: "4,8", sym: "/5", lbl: "Satisfaction équipe", desc: "Vos vendeurs ne gèrent plus la frustration de la queue. Ils servent, plus vite, plus calmement.", src: "Terrain", warm: true, delay: 0.16 },
 ];
